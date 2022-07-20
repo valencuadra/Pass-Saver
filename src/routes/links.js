@@ -9,12 +9,14 @@ router.get("/add", isloggedin, (req, res) => {
 });
 
 router.post("/add", isloggedin, async (req, res) => {
-    const { title, url, description } = req.body;
+    const { title, url, description, mail, contrasena } = req.body;
     const newlink = {
         title,
         url,
         description,
-        user_id: req.user.id
+        user_id: req.user.id,
+        mail,
+        contrasena,
     };
     await pool.query("INSERT INTO links set ?", [newlink]);
     req.flash("success", "Link guardado exitosamente");
@@ -41,11 +43,14 @@ router.get("/edit/:id", isloggedin, async (req, res) => {
 
 router.post("/edit/:id", async (req, res) => {
     const { id } = req.params;
-    const { title, description, url} = req.body;
+    const { title, description, url, mail, contrasena} = req.body;
     const newlink = {
         title,
         description,
-        url
+        url,
+        user_id: req.user.id,
+        mail,
+        contrasena
     };
     await pool.query("UPDATE links set ? WHERE id = ?", [newlink, id]);
     req.flash("success", "Link actualizado con exito");

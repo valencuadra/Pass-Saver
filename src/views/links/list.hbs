@@ -9,17 +9,23 @@
                                 {{title}}
                             </h3>
                         </a>
-                        <p class="m-2">{{description}}</p>
-                        <p>{{timeago created_at}}</p>
-                        <a href="/links/delete/{{id}}" class="btn btn-danger">Delit dis</a>
+                        <p class="m-2" align="left"><strong>- Usuario:</strong> {{description}}</p>
+                        <p class="m-2" align="left"><strong>- Mail:</strong> {{mail}}</p>
+                        <p class="m-2" align="left"><strong>- Contraseña:</strong> {{contrasena}}</p>
+                        <div class="card boxo mb-2">
+                        <p><i>{{timeago created_at}}</i></p>
+                        </div>
+                        <div>
+                        <a href="/links/delete/{{id}}" class="btn btn-danger">Borrar</a>
                         <a href="/links/edit/{{id}}" class="btn btn-secondary">Editar</a>
+                        </div>
                     </div>
                 </div>
             </div>
         {{else}}
             <div class="col-md4 mx-auto">
                 <div class="card card-body text-center">
-                    <p>Sory, aún no tenes links disponibles</p>
+                    <p>Sorry, aún no tenes links disponibles</p>
                     <a href="/links/add">Create uno</a>
                 </div>
             </div>
